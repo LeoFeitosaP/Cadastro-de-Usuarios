@@ -28,12 +28,18 @@ public class UsuarioService {
         usuarioRepository.deleteByEmail(email);
     }
 
+    public void deletarUsusarioPorTelefone(String telefone) {
+        usuarioRepository.deleteByTelefone(telefone);
+    }
+
     public void atualizarUsuarioPorEmail(Integer id, Usuario usuario) {
         Usuario usuarioEntity = usuarioRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Usuario não encontrado!"));
         Usuario usuarioAtualizado = Usuario.builder()
                 .email(usuario.getEmail() != null ? usuario.getEmail() : usuarioEntity.getEmail())
                 .nome(usuario.getNome() != null ? usuario.getNome() : usuarioEntity.getEmail())
+                .idade(usuario.getIdade() != null ? usuario.getIdade() : usuarioEntity.getIdade())
+                .telefone(usuario.getTelefone() != null ? usuario.getTelefone() : usuarioEntity.getTelefone())
                 .id(usuarioEntity.getId())
                 .build();
 

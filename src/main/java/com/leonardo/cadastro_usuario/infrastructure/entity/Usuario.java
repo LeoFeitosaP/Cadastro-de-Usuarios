@@ -21,4 +21,12 @@ public class Usuario {
 
     @Column(name = "nome")
     private String nome;
+
+    @Column(name = "idade")
+    private Integer idade;
+
+    @Column(name = "telefone", unique = true)
+    private String telefone;
+
+
 }
